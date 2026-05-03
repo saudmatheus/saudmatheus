@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saud Personal — Transformação Real. Guaíra-SP.</title>
+<meta name="description" content="Personal Trainer em Guaíra-SP. 37+ alunos. 41kg em 12 meses. Método personalizado. Presencial e online.">
+<meta property="og:title" content="Saud Personal — Transformação Real">
+<meta property="og:description" content="37 alunos ativos. 41kg em 12 meses. Método personalizado. Guaíra-SP e online.">
+<meta name="theme-color" content="#080808">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════════ */
+:root {
+  --k:    #080808;
+  --k2:   #0f0f0f;
+  --k3:   #181818;
+  --k4:   #242424;
+  --lime: #C9F135;
+  --lime-d: #9DC510;
+  --lime-dim: rgba(201,241,53,.09);
+  --white: #F8F8F4;
+  --off:   #AEAEA6;
+  --muted: #606060;
+  --wpp:   #25D366;
+  --head:  'Oswald', sans-serif;
+  --body:  'DM Sans', sans-serif;
+  --ease:  cubic-bezier(.16,1,.3,1);
+  /* fluid type scale — mobile base, clamp to desktop */
+  --t-xs:  clamp(11px, 2.8vw, 13px);
+  --t-sm:  clamp(13px, 3.5vw, 15px);
+  --t-md:  clamp(15px, 4vw,   18px);
+  --t-lg:  clamp(28px, 6vw,   48px);
+  --t-xl:  clamp(40px, 9vw,   80px);
+  --t-2xl: clamp(56px,13vw,  140px);
+  /* spacing */
+  --s-sm:  clamp(48px,8vw,  80px);
+  --s-md:  clamp(64px,10vw,120px);
+  --s-lg:  clamp(80px,12vw,160px);
+  --pad:   clamp(16px,5vw,  32px);
+}
+
+/* ══════════════════════════════════════════════
+   RESET
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--k); -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--k);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--lime); color: var(--k); }
+
+/* cursor — desabilitado em touch */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  #cursor, #cursor-ring { display: block; }
+}
+#cursor, #cursor-ring { display: none; }
+#cursor {
+  position: fixed; z-index: 9999;
+  width: 10px; height: 10px;
+  background: var(--lime); border-radius: 50%;
+  pointer-events: none; transform: translate(-50%,-50%);
+  mix-blend-mode: difference;
+  transition: width .18s var(--ease), height .18s var(--ease);
+}
+#cursor-ring {
+  position: fixed; z-index: 9998;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,241,53,.35); border-radius: 50%;
+  pointer-events: none; transform: translate(-50%,-50%);
+  transition: width .3s var(--ease), height .3s var(--ease);
+}
+
+/* ══════════════════════════════════════════════
+   NOISE
+══════════════════════════════════════════════ */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 9000;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .028;
+}
+
+/* ══════════════════════════════════════════════
+   UTILITIES
+══════════════════════════════════════════════ */
+.wrap {
+  width: 100%; max-width: 1140px;
+  margin: 0 auto; padding: 0 var(--pad);
+}
+.lime  { color: var(--lime); }
+.muted { color: var(--muted); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--head); font-size: var(--t-xs);
+  font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--lime);
+}
+.eyebrow::before {
+  content: ''; width: 22px; height: 1px; background: var(--lime); flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════════ */
+[data-r] {
+  opacity: 0;
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+[data-r="up"]    { transform: translateY(36px); }
+[data-r="left"]  { transform: translateX(-36px); }
+[data-r="right"] { transform: translateX(36px); }
+[data-r="scale"] { transform: scale(.93); }
+[data-r].on      { opacity: 1; transform: none; }
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+.d5 { transition-delay: .40s; }
+
+/* ══════════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════════ */
+.mq-wrap {
+  overflow: hidden; background: var(--k2);
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  padding: 12px 0;
+}
+.mq-track {
+  display: flex; width: max-content;
+  animation: mq 28s linear infinite;
+}
+.mq-track.rev { animation-direction: reverse; }
+@keyframes mq { to { transform: translateX(-50%); } }
+.mq-item {
+  font-family: var(--head); font-size: var(--t-xs);
+  font-weight: 400; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap; padding: 0 32px;
+  display: inline-flex; align-items: center; gap: 32px;
+}
+.mq-item::after { content: '◆'; color: var(--lime); font-size: 7px; }
+
+/* ══════════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 18px 0;
+  border-bottom: 1px solid transparent;
+  transition: padding .35s var(--ease), background .35s, border-color .35s;
+}
+nav.stuck {
+  padding: 13px 0;
+  background: rgba(8,8,8,.94);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(255,255,255,.05);
+}
+.nav-in {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.nav-logo {
+  font-family: var(--head); font-size: 20px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; flex-shrink: 0;
+}
+.nav-logo span { color: var(--lime); }
+
+/* desktop links – hidden on mobile */
+.nav-links { display: none; }
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+  }
+  .nav-links a {
+    font-family: var(--head); font-size: var(--t-xs);
+    font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+}
+
+.nav-cta {
+  font-family: var(--head); font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--lime); color: var(--k);
+  padding: 10px 20px; white-space: nowrap;
+  clip-path: polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);
+  transition: background .2s, transform .2s var(--ease);
+}
+.nav-cta:hover { background: var(--lime-d); transform: translateY(-1px); }
+
+/* ══════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════ */
+.btn-wpp, .btn-ghost, .btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--head); font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; text-decoration: none; cursor: pointer;
+  transition: transform .25s var(--ease), box-shadow .25s, background .2s;
+  -webkit-tap-highlight-color: transparent;
+  /* touch friendly */
+  min-height: 52px; padding: 14px 28px;
+  font-size: clamp(13px,3.5vw,15px);
+}
+.btn-wpp {
+  background: var(--wpp); color: #fff;
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+}
+.btn-wpp:hover, .btn-wpp:focus { background: #20bf5c; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,.3); }
+.btn-ghost {
+  background: none; color: var(--muted); border: none;
+  border-bottom: 1px solid rgba(255,255,255,.1); padding: 12px 0;
+  clip-path: none; min-height: unset;
+}
+.btn-ghost:hover { color: var(--white); border-bottom-color: var(--lime); }
+.btn-outline {
+  background: none; color: var(--lime);
+  border: 1px solid rgba(201,241,53,.3);
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+}
+.btn-outline:hover { background: var(--lime-dim); transform: translateY(-1px); }
+/* full width helper for mobile */
+.btn-full { width: 100%; }
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.hero {
+  min-height: 100svh; /* svh for mobile browsers */
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 100px 0 0;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+.hero-word {
+  position: absolute; top: 44%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(100px, 30vw, 340px);
+  text-transform: uppercase; letter-spacing: -.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,241,53,.055);
+  white-space: nowrap; user-select: none;
+  animation: wdrift 14s ease-in-out infinite;
+}
+@keyframes wdrift {
+  0%,100% { transform: translate(-50%,-50%) scale(1); }
+  50%      { transform: translate(-50%,-52%) scale(1.025); }
+}
+.hero-orb {
+  position: absolute; top: -20%; right: -20%;
+  width: clamp(300px,70vw,700px); height: clamp(300px,70vw,700px);
+  background: radial-gradient(circle, rgba(201,241,53,.055) 0%, transparent 65%);
+  border-radius: 50%;
+}
+.hero-scanlines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,0,0,.07) 3px, rgba(0,0,0,.07) 4px
+  );
+}
+
+.hero-body { position: relative; z-index: 2; }
+
+/* ── Mobile layout: stacked ── */
+.hero-text { padding-bottom: 32px; }
+.hero-eyebrow { margin-bottom: 16px; }
+.hero-h1 {
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(60px, 16vw, 160px);
+  text-transform: uppercase; line-height: .88;
+  letter-spacing: -.015em;
+}
+.hero-h1 .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.hero-h1 .word span {
+  display: inline-block;
+  animation: win .85s var(--ease) both;
+}
+.hero-h1 .word:nth-child(2) span { animation-delay: .08s; }
+.hero-h1 .word:nth-child(3) span { animation-delay: .16s; }
+.hero-h1 .word:nth-child(4) span { animation-delay: .24s; }
+.hero-h1 .word:nth-child(5) span { animation-delay: .32s; }
+@keyframes win {
+  from { transform: translateY(108%); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.stroke-text  { color: transparent; -webkit-text-stroke: 1.5px var(--white); }
+.accent-text  { color: var(--lime); }
+
+.hero-sub {
+  font-size: var(--t-sm); font-weight: 300; color: var(--off);
+  line-height: 1.7; margin-bottom: 28px;
+  animation: finup .8s .5s var(--ease) both;
+  max-width: 520px;
+}
+.hero-sub strong { color: var(--white); font-weight: 500; }
+.hero-ctas {
+  display: flex; flex-direction: column; gap: 12px;
+  animation: finup .8s .6s var(--ease) both;
+}
+@keyframes finup {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Desktop layout: side-by-side ── */
+@media (min-width: 900px) {
+  .hero-body { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: flex-end; }
+  .hero-ctas { flex-direction: column; }
+  .btn-full { width: auto; }
+}
+
+/* stats bar */
+.hero-stats {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 48px;
+  animation: finup .8s .7s var(--ease) both;
+}
+@media (min-width: 560px) { .hero-stats { grid-template-columns: repeat(4,1fr); } }
+.hstat {
+  padding: 20px 16px;
+  border-right: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.hstat:nth-child(even) { border-right: none; }
+@media (min-width: 560px) {
+  .hstat { border-bottom: none; }
+  .hstat:nth-child(4) { border-right: none; }
+  .hstat:nth-child(even) { border-right: 1px solid rgba(255,255,255,.06); }
+  .hstat:last-child { border-right: none; }
+}
+.hstat-n {
+  font-family: var(--head); font-size: clamp(36px,8vw,52px); font-weight: 700;
+  color: var(--lime); line-height: 1; display: block;
+}
+.hstat-l {
+  display: block; font-size: var(--t-xs); font-weight: 300;
+  color: var(--muted); margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════════
+   DOR
+══════════════════════════════════════════════ */
+.dor {
+  padding: var(--s-md) 0;
+  background: var(--k2); position: relative; overflow: hidden;
+}
+.dor::after {
+  content: 'VOCÊ';
+  position: absolute; right: -24px; top: 50%; transform: translateY(-50%);
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(100px,28vw,260px);
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.025);
+  pointer-events: none; user-select: none; line-height: 1;
+}
+.dor-head { margin-bottom: 40px; }
+.dor-head h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-xl);
+  text-transform: uppercase; line-height: .88;
+  letter-spacing: -.01em; margin-top: 12px; margin-bottom: 20px;
+}
+.dor-head p {
+  font-size: var(--t-sm); font-weight: 300; color: var(--off);
+  line-height: 1.75; max-width: 380px; margin-bottom: 28px;
+}
+.dor-items { display: flex; flex-direction: column; gap: 2px; }
+.dor-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.04);
+  transition: background .2s, border-color .2s, transform .25s var(--ease);
+}
+.dor-item:active, .dor-item:hover {
+  background: rgba(201,241,53,.04);
+  border-color: rgba(201,241,53,.12);
+  transform: translateX(6px);
+}
+.dor-n { font-family: var(--head); font-size: 11px; font-weight: 500; color: var(--lime); letter-spacing: .12em; flex-shrink: 0; margin-top: 2px; }
+.dor-t { font-size: var(--t-sm); font-weight: 300; color: var(--off); line-height: 1.55; }
+.dor-t strong { color: var(--white); font-weight: 500; }
+
+@media (min-width: 768px) {
+  .dor-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .dor-head { margin-bottom: 0; }
+}
+
+/* ══════════════════════════════════════════════
+   CASE ÂNCORA
+══════════════════════════════════════════════ */
+.case { background: var(--k); overflow: hidden; }
+
+/* mobile: stacked */
+.case-visual {
+  background: var(--k3); min-height: 56vw;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 48px 24px;
+}
+.case-grid-lines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg, transparent, transparent 39px,
+    rgba(255,255,255,.013) 40px
+  );
+}
+.case-big {
+  font-family: var(--head); font-weight: 700; text-align: center; position: relative; z-index: 2;
+}
+.case-big-n {
+  font-size: clamp(80px,20vw,200px); color: var(--lime); line-height: 1;
+  display: block;
+}
+.case-big-unit {
+  font-size: clamp(32px,8vw,72px); color: var(--lime); line-height: 1;
+}
+.case-big-sub {
+  display: block; font-family: var(--head); font-size: var(--t-xs);
+  letter-spacing: .2em; text-transform: uppercase; color: var(--off);
+  margin-top: 8px;
+}
+.case-badge {
+  position: absolute; bottom: 20px; left: 20px;
+  background: var(--lime); color: var(--k);
+  font-family: var(--head); font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; padding: 7px 14px;
+}
+.case-content {
+  padding: clamp(40px,8vw,80px) var(--pad);
+  background: var(--k);
+}
+.case-quote {
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(28px,7vw,54px);
+  text-transform: uppercase; line-height: .93;
+  letter-spacing: -.01em; margin: 20px 0 32px;
+}
+.case-quote em { font-style: normal; color: var(--lime); }
+.case-tl {
+  border-left: 1px solid rgba(255,255,255,.08); padding-left: 24px;
+  display: flex; flex-direction: column; gap: 0; margin-bottom: 36px;
+}
+.case-step { position: relative; padding: 14px 0; }
+.case-step::before {
+  content: ''; position: absolute; left: -29px; top: 50%; transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--k3); border: 1.5px solid var(--muted);
+  transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.case-step.hi::before {
+  background: var(--lime); border-color: var(--lime);
+  box-shadow: 0 0 14px rgba(201,241,53,.4);
+}
+.case-step-lbl {
+  font-family: var(--head); font-size: 10px; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+}
+.case-step-val { font-size: var(--t-sm); font-weight: 300; color: var(--off); }
+.case-step-val strong { color: var(--white); font-weight: 500; }
+
+@media (min-width: 900px) {
+  .case-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+  .case-visual { min-height: unset; }
+  .case-content { padding: 80px 72px; }
+}
+
+/* ══════════════════════════════════════════════
+   MÉTODO
+══════════════════════════════════════════════ */
+.metodo { padding: var(--s-md) 0; background: var(--k); }
+.metodo-head { margin-bottom: clamp(36px,6vw,64px); }
+.metodo-head h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-xl); text-transform: uppercase;
+  line-height: .88; letter-spacing: -.01em; margin-top: 12px;
+}
+.metodo-note {
+  font-size: var(--t-sm); font-weight: 300; color: var(--muted);
+  line-height: 1.7; margin-top: 16px; max-width: 300px;
+}
+.pilares {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+@media (min-width: 768px) { .pilares { grid-template-columns: repeat(4,1fr); } }
+.pilar {
+  background: var(--k2); padding: 28px 24px 36px;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.pilar::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--lime); transform: scaleX(0); transform-origin: left;
+  transition: transform .45s var(--ease);
+}
+.pilar:hover { background: rgba(201,241,53,.025); }
+.pilar:hover::after { transform: scaleX(1); }
+.pilar-n {
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(64px,14vw,96px); color: rgba(201,241,53,.07);
+  line-height: 1; margin-bottom: -12px;
+}
+.pilar-icon { font-size: 24px; margin-bottom: 12px; }
+.pilar h3 {
+  font-family: var(--head); font-size: clamp(16px,4vw,20px); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px;
+}
+.pilar p { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+
+/* ══════════════════════════════════════════════
+   PLANOS
+══════════════════════════════════════════════ */
+.planos { padding: var(--s-md) 0; background: var(--k2); position: relative; overflow: hidden; }
+.planos-head { text-align: center; margin-bottom: clamp(36px,6vw,64px); }
+.planos-head h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-xl); text-transform: uppercase;
+  line-height: .88; letter-spacing: -.01em; margin-top: 12px; margin-bottom: 12px;
+}
+.planos-head p { font-size: var(--t-sm); font-weight: 300; color: var(--muted); }
+.planos-grid {
+  display: flex; flex-direction: column; gap: 2px;
+}
+@media (min-width: 900px) {
+  .planos-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    align-items: start;
+  }
+}
+.plano {
+  background: var(--k3); display: flex; flex-direction: column;
+  transition: background .3s;
+  position: relative;
+}
+.plano:not(.feat):hover { background: rgba(201,241,53,.025); }
+.plano.feat {
+  background: var(--lime); z-index: 2;
+}
+@media (min-width: 900px) { .plano.feat { transform: scaleY(1.02); } }
+.plano.feat * { color: var(--k) !important; }
+.plano.feat .plano-items li::before { color: rgba(0,0,0,.5) !important; }
+.plano.feat .plano-cta {
+  background: var(--k) !important; color: var(--lime) !important;
+  border-color: var(--k) !important;
+}
+.plano-h { padding: clamp(24px,5vw,40px) clamp(20px,5vw,36px) 24px; border-bottom: 1px solid rgba(255,255,255,.06); }
+.plano.feat .plano-h { border-bottom-color: rgba(0,0,0,.08); }
+.plano-tier {
+  font-family: var(--head); font-size: 10px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+.plano-price { display: flex; align-items: baseline; gap: 3px; }
+.plano-cur { font-family: var(--head); font-size: 20px; font-weight: 400; margin-top: 6px; }
+.plano-val {
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(56px,12vw,80px); line-height: .85; letter-spacing: -.02em;
+}
+.plano-per { font-size: 13px; font-weight: 300; color: var(--muted); margin-left: 2px; }
+.plano-name {
+  font-family: var(--head); font-size: clamp(14px,3.5vw,17px); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 14px;
+}
+.plano-desc { font-size: 13px; font-weight: 300; color: var(--muted); margin-top: 6px; line-height: 1.6; font-style: italic; }
+.plano-b { padding: 24px clamp(20px,5vw,36px); flex: 1; }
+.plano-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.plano-items li {
+  font-size: 13px; font-weight: 300; color: var(--off);
+  display: flex; gap: 10px; line-height: 1.4;
+}
+.plano-items li::before { content: '—'; color: var(--lime); flex-shrink: 0; margin-top: 1px; }
+.plano-f { padding: 8px clamp(20px,5vw,36px) clamp(24px,5vw,36px); }
+.plano-cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 52px;
+  font-family: var(--head); font-size: 13px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  background: var(--lime-dim); color: var(--lime);
+  border: 1px solid rgba(201,241,53,.2);
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition: background .2s, transform .2s var(--ease);
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.plano-cta:hover { background: rgba(201,241,53,.15); transform: translateY(-2px); }
+.plano-note { text-align: center; font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+/* ══════════════════════════════════════════════
+   DEPOIMENTOS
+══════════════════════════════════════════════ */
+.depos { padding: var(--s-md) 0; background: var(--k); }
+.depos-head { margin-bottom: clamp(36px,6vw,56px); }
+.depos-head h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-xl); text-transform: uppercase;
+  line-height: .88; letter-spacing: -.01em; margin-top: 12px;
+}
+.depos-grid {
+  display: grid; grid-template-columns: 1fr; gap: 2px;
+}
+@media (min-width: 600px) { .depos-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .depos-grid { grid-template-columns: repeat(3,1fr); } }
+.depo {
+  background: var(--k2); padding: clamp(24px,5vw,36px) clamp(20px,5vw,32px);
+  border-bottom: 2px solid transparent;
+  transition: border-color .3s, background .3s;
+}
+.depo:hover { background: rgba(201,241,53,.025); border-bottom-color: var(--lime); }
+.depo-mark { font-family: var(--head); font-size: 36px; font-weight: 700; color: rgba(201,241,53,.18); line-height: 1; margin-bottom: 8px; }
+.depo-txt { font-size: var(--t-sm); font-weight: 300; color: var(--off); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.depo-author { display: flex; align-items: center; gap: 12px; }
+.depo-av {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--k4); border: 1px solid rgba(201,241,53,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--head); font-size: 15px; font-weight: 600; color: var(--lime);
+  flex-shrink: 0;
+}
+.depo-name { font-size: 14px; font-weight: 500; }
+.depo-plan { font-size: 12px; font-weight: 300; color: var(--muted); }
+
+/* ══════════════════════════════════════════════
+   SOBRE
+══════════════════════════════════════════════ */
+.sobre { padding: var(--s-md) 0; background: var(--k3); overflow: hidden; }
+.sobre-inner { display: flex; flex-direction: column; gap: 48px; }
+@media (min-width: 900px) {
+  .sobre-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+}
+
+.sobre-img-wrap { position: relative; }
+.sobre-img {
+  background: var(--k4);
+  aspect-ratio: 3/4; max-height: 60vw;
+  border: 1px solid rgba(255,255,255,.05);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+@media (min-width: 900px) { .sobre-img { max-height: none; } }
+.sobre-ph {
+  font-family: var(--head); font-weight: 700;
+  font-size: clamp(48px,12vw,80px); color: rgba(201,241,53,.12);
+  text-align: center; line-height: 1;
+}
+.sobre-ph span {
+  display: block; font-size: clamp(11px,2.5vw,14px); font-weight: 300;
+  color: var(--muted); letter-spacing: .2em; text-transform: uppercase; margin-top: 8px;
+}
+.sobre-tag1 {
+  position: absolute; bottom: -14px; left: -8px;
+  background: var(--lime); color: var(--k);
+  font-family: var(--head); font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; padding: 10px 16px;
+}
+.sobre-tag2 {
+  position: absolute; top: 16px; right: -8px;
+  background: var(--k); border: 1px solid rgba(201,241,53,.25); color: var(--lime);
+  font-family: var(--head); font-size: 11px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px;
+}
+.sobre-content h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-lg); text-transform: uppercase;
+  line-height: .9; letter-spacing: -.01em; margin: 12px 0 20px;
+}
+.sobre-content p { font-size: var(--t-sm); font-weight: 300; color: var(--off); line-height: 1.75; margin-bottom: 16px; }
+.sobre-creds { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+.cred { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; font-weight: 300; color: var(--off); }
+.cred-l { width: 18px; height: 1px; background: var(--lime); flex-shrink: 0; margin-top: 8px; }
+
+/* ══════════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════════ */
+.faq { padding: var(--s-md) 0; background: var(--k); }
+.faq-inner { display: flex; flex-direction: column; gap: 40px; }
+@media (min-width: 768px) {
+  .faq-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+}
+.faq-sticky h2 {
+  font-family: var(--head); font-weight: 700;
+  font-size: var(--t-xl); text-transform: uppercase;
+  line-height: .88; letter-spacing: -.01em; margin-top: 12px;
+}
+@media (min-width: 768px) { .faq-sticky h2 { position: sticky; top: 100px; } }
+.faq-list { display: flex; flex-direction: column; gap: 2px; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,.06); transition: border-color .2s; }
+.faq-item.open { border-bottom-color: var(--lime); }
+.faq-btn {
+  width: 100%; display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 20px; padding: 20px 0; cursor: pointer; background: none; border: none;
+  color: inherit; text-align: left; -webkit-tap-highlight-color: transparent;
+}
+.faq-q {
+  font-family: var(--head); font-size: clamp(15px,4vw,18px); font-weight: 500;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--white); transition: color .2s;
+}
+.faq-item.open .faq-q { color: var(--lime); }
+.faq-ic {
+  font-size: 20px; color: var(--muted); flex-shrink: 0; line-height: 1;
+  margin-top: 2px; transition: transform .35s var(--ease), color .2s;
+}
+.faq-item.open .faq-ic { transform: rotate(45deg); color: var(--lime); }
+.faq-ans {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s var(--ease);
+  font-size: var(--t-sm); font-weight: 300; color: var(--muted); line-height: 1.7;
+}
+.faq-item.open .faq-ans { padding-bottom: 20px; }
+
+/* ══════════════════════════════════════════════
+   CTA FINAL
+══════════════════════════════════════════════ */
+.cta-final {
+  padding: var(--s-lg) 0; background: var(--lime);
+  position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 18px,
+    rgba(0,0,0,.035) 18px, rgba(0,0,0,.035) 19px
+  );
+}
+.cta-inner { position: relative; z-index: 2; text-align: center; }
+.cta-inner .eyebrow { color: rgba(0,0,0,.45); justify-content: center; }
+.cta-inner .eyebrow::before { background: rgba(0,0,0,.35); }
+.cta-h2 {
+  font-family: var(--head); font-weight: 700; color: var(--k);
+  font-size: var(--t-2xl);
+  text-transform: uppercase; line-height: .86; letter-spacing: -.02em;
+  margin: 20px 0 28px;
+}
+.cta-h2 .dim { opacity: .22; }
+.cta-p {
+  font-size: var(--t-md); font-weight: 300; color: rgba(0,0,0,.6);
+  max-width: 420px; margin: 0 auto 40px; line-height: 1.65;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: var(--head); font-size: clamp(15px,4vw,18px); font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  background: var(--k); color: var(--lime);
+  padding: 18px clamp(28px,6vw,52px);
+  clip-path: polygon(14px 0%,100% 0%,calc(100% - 14px) 100%,0% 100%);
+  transition: background .2s, transform .25s var(--ease), box-shadow .25s;
+  -webkit-tap-highlight-color: transparent;
+}
+.cta-btn:hover { background: var(--k2); transform: translateY(-3px); box-shadow: 0 18px 56px rgba(0,0,0,.25); }
+.cta-contacts {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 32px;
+  margin-top: 36px;
+}
+.cta-ci {
+  font-family: var(--head); font-size: var(--t-xs); font-weight: 400;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(0,0,0,.45); display: flex; align-items: center; gap: 7px;
+}
+.cta-ci strong { color: rgba(0,0,0,.75); }
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+footer {
+  background: var(--k);
+  border-top: 1px solid rgba(255,255,255,.04);
+  padding: 32px 0;
+}
+.footer-in {
+  display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center;
+}
+@media (min-width: 600px) {
+  .footer-in { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+.f-logo { font-family: var(--head); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.f-logo span { color: var(--lime); }
+.f-copy { font-size: 12px; font-weight: 300; color: var(--muted); }
+
+/* ══════════════════════════════════════════════
+   WPP FLOAT
+══════════════════════════════════════════════ */
+.wpp-float {
+  position: fixed; bottom: 24px; right: 20px; z-index: 400;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--wpp); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 28px rgba(37,211,102,.38);
+  transition: transform .3s var(--ease), box-shadow .3s;
+  animation: wfloat .6s 1s var(--ease) both;
+  -webkit-tap-highlight-color: transparent;
+}
+.wpp-float:hover, .wpp-float:active { transform: scale(1.1); box-shadow: 0 14px 44px rgba(37,211,102,.5); }
+@keyframes wfloat {
+  from { transform: scale(0) translateY(20px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.wpp-float svg { width: 26px; height: 26px; fill: white; }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <div class="nav-logo">Saud<span>.</span></div>
+    <div class="nav-links">
+      <a href="#metodo">Método</a>
+      <a href="#case">Resultado</a>
+      <a href="#planos">Planos</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+    <a href="https://wa.me/5517981915431?text=Oi%20Saud!%20Vi%20seu%20site%20e%20quero%20fazer%20uma%20avaliação%20gratuita." target="_blank" class="nav-cta">Avaliar Agora</a>
+  </div>
+</nav>
+
+<!-- ══ MARQUEE 1 ══ -->
+<div class="mq-wrap" style="position:relative;z-index:2;margin-top:0">
+  <div class="mq-track">
+    <div class="mq-item">Personal Trainer Guaíra-SP</div>
+    <div class="mq-item">37+ Alunos Ativos</div>
+    <div class="mq-item">Consultoria Online</div>
+    <div class="mq-item">41kg em 12 Meses</div>
+    <div class="mq-item">Formado UNIFEB</div>
+    <div class="mq-item">CREF Registrado</div>
+    <div class="mq-item">Método Personalizado</div>
+    <div class="mq-item">Resultados Reais</div>
+    <div class="mq-item">Personal Trainer Guaíra-SP</div>
+    <div class="mq-item">37+ Alunos Ativos</div>
+    <div class="mq-item">Consultoria Online</div>
+    <div class="mq-item">41kg em 12 Meses</div>
+    <div class="mq-item">Formado UNIFEB</div>
+    <div class="mq-item">CREF Registrado</div>
+    <div class="mq-item">Método Personalizado</div>
+    <div class="mq-item">Resultados Reais</div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <div class="hero-word" aria-hidden="true">RESULTADO</div>
+    <div class="hero-orb"></div>
+    <div class="hero-scanlines"></div>
+  </div>
+  <div class="wrap hero-body">
+    <div class="hero-text">
+      <div class="hero-eyebrow eyebrow">Personal Trainer — Guaíra-SP</div>
+      <h1 class="hero-h1">
+        <div class="word"><span class="stroke-text">Você</span></div>&#32;<div class="word"><span class="stroke-text">já</span></div>
+        <br>
+        <div class="word"><span class="accent-text">tentou.</span></div>
+        <br>
+        <div class="word"><span>Agora vai</span></div>
+        <br>
+        <div class="word"><span class="accent-text">conseguir.</span></div>
+      </h1>
+    </div>
+    <div class="hero-cta-area">
+      <p class="hero-sub">
+        Treino <strong>personalizado para a sua realidade</strong>. Não para uma turma genérica. Acompanhamento real e resultado comprovado — em Guaíra-SP e online para todo o Brasil.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5517981915431?text=Oi%20Saud!%20Quero%20minha%20avaliação%20gratuita." target="_blank" class="btn-wpp btn-full">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Avaliação Gratuita
+        </a>
+        <a href="#planos" class="btn-ghost">Ver os planos →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n" data-count="37">0</span><span class="hstat-l">Alunos ativos</span></div>
+      <div class="hstat"><span class="hstat-n" data-count="41">0</span><span class="hstat-l">Kg perdidos em 1 ano</span></div>
+      <div class="hstat"><span class="hstat-n" data-count="2">0</span><span class="hstat-l">Anos de experiência</span></div>
+      <div class="hstat"><span class="hstat-n">CREF<span style="font-size:.45em"> ativo</span></span><span class="hstat-l">Formado UNIFEB</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DOR ══ -->
+<section class="dor" id="dor">
+  <div class="wrap dor-inner">
+    <div class="dor-head">
+      <div class="eyebrow" data-r="up">Identificação</div>
+      <h2 data-r="up" class="d1">Isso soa<br><span class="lime">familiar?</span></h2>
+      <p data-r="up" class="d2">Se você se reconheceu em ao menos um item, o problema <strong style="color:var(--white)">não é você</strong> — é a ausência de método.</p>
+      <a href="https://wa.me/5517981915431?text=Me%20identifiquei%20no%20site.%20Quero%20saber%20mais." target="_blank" class="btn-wpp btn-full" data-r="up" style="margin-top:4px; --delay:.3s; display:flex">
+        Quero mudar isso
+      </a>
+    </div>
+    <div class="dor-items">
+      <div class="dor-item" data-r="right"><span class="dor-n">01</span><span class="dor-t">Começou academia várias vezes — nunca conseguiu <strong>manter por mais de 2 meses</strong></span></div>
+      <div class="dor-item" data-r="right" style="transition-delay:.07s"><span class="dor-n">02</span><span class="dor-t">Segue treinos da internet mas o corpo <strong>simplesmente não muda</strong></span></div>
+      <div class="dor-item" data-r="right" style="transition-delay:.14s"><span class="dor-n">03</span><span class="dor-t">Tem pouco tempo, vida corrida, e não sabe <strong>por onde começar de verdade</strong></span></div>
+      <div class="dor-item" data-r="right" style="transition-delay:.21s"><span class="dor-n">04</span><span class="dor-t">Sente que está <strong>envelhecendo mal</strong> e perdendo o controle do próprio corpo</span></div>
+      <div class="dor-item" data-r="right" style="transition-delay:.28s"><span class="dor-n">05</span><span class="dor-t">Já tentou dieta restritiva e ficou com fome — <strong>sem resultado duradouro</strong></span></div>
+      <div class="dor-item" data-r="right" style="transition-delay:.35s"><span class="dor-n">06</span><span class="dor-t">Ciclo eterno de <strong>começar, parar, culpar-se e recomeçar</strong> do zero</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CASE ══ -->
+<section class="case" id="case">
+  <div class="case-split">
+    <div class="case-visual" data-r="scale">
+      <div class="case-grid-lines"></div>
+      <div class="case-big">
+        <span class="case-big-n counter" data-count="41">0</span><span class="case-big-unit">kg</span>
+        <span class="case-big-sub">perdidos em 12 meses</span>
+      </div>
+      <div class="case-badge">Case Real — Guaíra-SP</div>
+    </div>
+    <div class="case-content">
+      <div class="eyebrow" data-r="up">O Maior Resultado</div>
+      <blockquote class="case-quote" data-r="up" class="d1">
+        "Ela saiu de <em>130kg</em> para <em>89kg.</em> Sem cirurgia. Sem passar fome."
+      </blockquote>
+      <div class="case-tl" data-r="up" class="d2">
+        <div class="case-step">
+          <div class="case-step-lbl">Início</div>
+          <div class="case-step-val">130kg — dificuldade para se amarrar sozinha</div>
+        </div>
+        <div class="case-step">
+          <div class="case-step-lbl">3 meses</div>
+          <div class="case-step-val">Primeira roupa de tamanho menor. Autoestima voltando.</div>
+        </div>
+        <div class="case-step">
+          <div class="case-step-lbl">6 meses</div>
+          <div class="case-step-val"><strong>115kg — reeducação alimentar consolidada</strong></div>
+        </div>
+        <div class="case-step hi">
+          <div class="case-step-lbl">12 meses</div>
+          <div class="case-step-val"><strong>89kg — nova vida. Ainda aluna do Saud.</strong></div>
+        </div>
+      </div>
+      <a href="https://wa.me/5517981915431?text=Vi%20o%20case%20no%20site%20e%20quero%20escrever%20a%20minha%20história." target="_blank" class="btn-wpp btn-full" data-r="up" class="d3">
+        Quero o mesmo resultado
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÉTODO ══ -->
+<section class="metodo" id="metodo">
+  <div class="wrap">
+    <div class="metodo-head">
+      <div class="eyebrow" data-r="up">O Método Saud</div>
+      <h2 data-r="up" class="d1">O método<br><span class="lime">que funciona</span></h2>
+      <p class="metodo-note" data-r="up" class="d2">Quatro pilares que constroem resultados reais — e um novo estilo de vida.</p>
+    </div>
+    <div class="pilares">
+      <div class="pilar" data-r="up"><div class="pilar-n">01</div><div class="pilar-icon">🔍</div><h3>Diagnóstico</h3><p>Avaliação física completa + conversa honesta. Sem julgamento, sem treino genérico.</p></div>
+      <div class="pilar" data-r="up" class="d1"><div class="pilar-n">02</div><div class="pilar-icon">⚙️</div><h3>Personalização</h3><p>Treino montado para o SEU corpo, rotina e objetivo. Não uma planilha copiada.</p></div>
+      <div class="pilar" data-r="up" class="d2"><div class="pilar-n">03</div><div class="pilar-icon">📊</div><h3>Acompanhamento</h3><p>Ajuste mensal, suporte WhatsApp, feedback real. Nunca fica sozinho.</p></div>
+      <div class="pilar" data-r="up" class="d3"><div class="pilar-n">04</div><div class="pilar-icon">📈</div><h3>Evolução</h3><p>Fotos e medidas a cada 30 dias. Você vê a diferença no espelho e nos números.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE 2 ══ -->
+<div class="mq-wrap">
+  <div class="mq-track rev">
+    <div class="mq-item">Emagrecer com Método</div>
+    <div class="mq-item">Ganho Muscular</div>
+    <div class="mq-item">Qualidade de Vida</div>
+    <div class="mq-item">Condicionamento</div>
+    <div class="mq-item">Emagrecimento Feminino</div>
+    <div class="mq-item">Performance Esportiva</div>
+    <div class="mq-item">Sem Passar Fome</div>
+    <div class="mq-item">Terceira Idade</div>
+    <div class="mq-item">Emagrecer com Método</div>
+    <div class="mq-item">Ganho Muscular</div>
+    <div class="mq-item">Qualidade de Vida</div>
+    <div class="mq-item">Condicionamento</div>
+    <div class="mq-item">Emagrecimento Feminino</div>
+    <div class="mq-item">Performance Esportiva</div>
+    <div class="mq-item">Sem Passar Fome</div>
+    <div class="mq-item">Terceira Idade</div>
+  </div>
+</div>
+
+<!-- ══ PLANOS ══ -->
+<section class="planos" id="planos">
+  <div class="wrap">
+    <div class="planos-head">
+      <div class="eyebrow" data-r="up" style="justify-content:center">Investimento</div>
+      <h2 data-r="up" class="d1">Escolha seu<br><span class="lime">ponto de entrada</span></h2>
+      <p data-r="up" class="d2">Três caminhos. Um destino. Você decide o ritmo.</p>
+    </div>
+    <div class="planos-grid">
+      <!-- ENTRADA -->
+      <div class="plano" data-r="up">
+        <div class="plano-h">
+          <div class="plano-tier">Nível Entrada</div>
+          <div class="plano-price"><span class="plano-cur">R$</span><span class="plano-val">97</span></div>
+          <span class="plano-per">pagamento único</span>
+          <div class="plano-name">Planilha Saud Method</div>
+          <p class="plano-desc">Para quem quer começar com baixo risco e testar o método.</p>
+        </div>
+        <div class="plano-b">
+          <ul class="plano-items">
+            <li>Planilha personalizada 12 semanas</li>
+            <li>Protocolo emagrecimento ou hipertrofia</li>
+            <li>Guia de execução dos exercícios</li>
+            <li>Grupo WhatsApp por 30 dias</li>
+            <li>Entregue via Mfit ou PDF</li>
+          </ul>
+        </div>
+        <div class="plano-f">
+          <a href="https://wa.me/5517981915431?text=Quero%20a%20Planilha%20Saud%20Method%20R$97." target="_blank" class="plano-cta">Quero a Planilha</a>
+        </div>
+      </div>
+      <!-- DESTAQUE -->
+      <div class="plano feat" data-r="up" class="d1">
+        <div class="plano-h">
+          <div class="plano-tier">★ Mais Popular</div>
+          <div class="plano-price"><span class="plano-cur">R$</span><span class="plano-val">297</span></div>
+          <span class="plano-per">/mês</span>
+          <div class="plano-name">Consultoria Online Completa</div>
+          <p class="plano-desc">Para quem quer resultado real com acompanhamento. Qualquer cidade do Brasil.</p>
+        </div>
+        <div class="plano-b">
+          <ul class="plano-items">
+            <li>Anamnese + definição de metas</li>
+            <li>Planilha atualizada mensalmente</li>
+            <li>Avaliação mensal por fotos e medidas</li>
+            <li>Ajuste de protocolo a cada 4 semanas</li>
+            <li>Suporte WhatsApp seg–sex (24h)</li>
+            <li>Orientação nutricional básica</li>
+            <li>Grupo de alunos para engajamento</li>
+          </ul>
+        </div>
+        <div class="plano-f">
+          <a href="https://wa.me/5517981915431?text=Quero%20a%20Consultoria%20Online%20R$297/mês." target="_blank" class="plano-cta">Começar Agora</a>
+          <p class="plano-note">Mínimo 3 meses · Semestral R$1.490</p>
+        </div>
+      </div>
+      <!-- PREMIUM -->
+      <div class="plano" data-r="up" class="d2">
+        <div class="plano-h">
+          <div class="plano-tier">Nível Premium</div>
+          <div class="plano-price"><span class="plano-cur">R$</span><span class="plano-val">580</span></div>
+          <span class="plano-per">/mês</span>
+          <div class="plano-name">Personal Presencial 1:1</div>
+          <p class="plano-desc">Acompanhamento intensivo presencial em Guaíra-SP.</p>
+        </div>
+        <div class="plano-b">
+          <ul class="plano-items">
+            <li>3 sessões 1:1 por semana</li>
+            <li>Avaliação início, meio e fim</li>
+            <li>Planilha atualizada quinzenalmente</li>
+            <li>Suporte WhatsApp ilimitado</li>
+            <li>Controle com fotos e % gordura</li>
+            <li>Parceria com nutricionista</li>
+            <li>Certificado de conclusão</li>
+          </ul>
+        </div>
+        <div class="plano-f">
+          <a href="https://wa.me/5517981915431?text=Quero%20o%20Personal%20Presencial%20em%20Guaíra." target="_blank" class="plano-cta">Quero Presencial</a>
+          <p class="plano-note">Exclusivo Guaíra-SP · Vagas limitadas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEPOIMENTOS ══ -->
+<section class="depos" id="depoimentos">
+  <div class="wrap">
+    <div class="depos-head">
+      <div class="eyebrow" data-r="up">Prova Social</div>
+      <h2 data-r="up" class="d1">Quem já<br><span class="lime">transformou.</span></h2>
+    </div>
+    <div class="depos-grid">
+      <div class="depo" data-r="up"><div class="depo-mark">"</div><p class="depo-txt">Nunca pensei que conseguiria manter uma rotina. Com o Saud aprendi que consistência imperfeita funciona melhor que perfeição que nunca acontece.</p><div class="depo-author"><div class="depo-av">A</div><div><div class="depo-name">Ana C.</div><div class="depo-plan">Consultoria Online</div></div></div></div>
+      <div class="depo" data-r="up" class="d1"><div class="depo-mark">"</div><p class="depo-txt">Ele montou um treino que se encaixa na minha rotina maluca de mãe. Em 3 meses não me reconhecia mais no espelho — para melhor.</p><div class="depo-author"><div class="depo-av">J</div><div><div class="depo-name">Juliana M.</div><div class="depo-plan">Personal Presencial</div></div></div></div>
+      <div class="depo" data-r="up" class="d2"><div class="depo-mark">"</div><p class="depo-txt">Com 44 anos achei que meu metabolismo não ia mudar. Ele me provou o contrário. Em 4 meses mais disposição do que tinha aos 30.</p><div class="depo-author"><div class="depo-av">C</div><div><div class="depo-name">Claudia N.</div><div class="depo-plan">Personal Presencial</div></div></div></div>
+      <div class="depo" data-r="up"><div class="depo-mark">"</div><p class="depo-txt">Além de profissional, é comprometido. Responde dúvidas, ajusta o treino. Diferença enorme de academia onde ninguém te vê.</p><div class="depo-author"><div class="depo-av">R</div><div><div class="depo-name">Rodrigo S.</div><div class="depo-plan">Personal Presencial</div></div></div></div>
+      <div class="depo" data-r="up" class="d1"><div class="depo-mark">"</div><p class="depo-txt">Achei que era caro até fazer as contas: menos de R$10 por dia por um personal que realmente me acompanha. Melhor investimento que fiz.</p><div class="depo-author"><div class="depo-av">F</div><div><div class="depo-name">Fernanda L.</div><div class="depo-plan">Consultoria Online</div></div></div></div>
+      <div class="depo" data-r="up" class="d2"><div class="depo-mark">"</div><p class="depo-txt">Fiz a planilha para testar. Em 60 dias evolui mais do que em 1 ano de academia. Migrei para a consultoria — não voltaria atrás.</p><div class="depo-author"><div class="depo-av">T</div><div><div class="depo-name">Thiago B.</div><div class="depo-plan">Planilha → Consultoria</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOBRE ══ -->
+<section class="sobre" id="sobre">
+  <div class="wrap sobre-inner">
+    <div class="sobre-img-wrap" data-r="left">
+      <div class="sobre-img">
+        <div class="sobre-ph">SM<span>@saudmatheus</span></div>
+      </div>
+      <div class="sobre-tag1">Saud Personal</div>
+      <div class="sobre-tag2">CREF Ativo</div>
+    </div>
+    <div class="sobre-content">
+      <div class="eyebrow" data-r="up">O Profissional</div>
+      <h2 data-r="up" class="d1">Matheus<br><span class="lime">Saud.</span></h2>
+      <p data-r="up" class="d2">Bacharelado em Educação Física pela UNIFEB, com mais de 2 anos de atuação como personal trainer e consultor online. 37 alunos ativos e resultados documentados em Guaíra-SP e todo o Brasil.</p>
+      <p data-r="up" class="d3">Cada aluno recebe um método feito para o seu corpo, sua rotina e o que quer conquistar. Não uma planilha genérica.</p>
+      <div class="sobre-creds" data-r="up" class="d4">
+        <div class="cred"><span class="cred-l"></span>Bacharelado em Educação Física — UNIFEB</div>
+        <div class="cred"><span class="cred-l"></span>Certificado em Alongamento e Desempenho Esportivo</div>
+        <div class="cred"><span class="cred-l"></span>Certificado em Acessibilidade no Esporte</div>
+        <div class="cred"><span class="cred-l"></span>37+ alunos ativos — Guaíra-SP e online</div>
+        <div class="cred"><span class="cred-l"></span>@saudmatheus no Instagram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-inner">
+    <div class="faq-sticky">
+      <div class="eyebrow" data-r="up">Dúvidas</div>
+      <h2 data-r="up" class="d1">Perguntas<br><span class="lime">respondidas.</span></h2>
+    </div>
+    <div class="faq-list" data-r="up" class="d2">
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">Funciona para quem tem pouco tempo?</span><span class="faq-ic">+</span></button><div class="faq-ans">A consultoria online foi feita para quem tem agenda cheia. Você treina quando pode, onde quiser. Mães, profissionais ocupados e trabalhadores rurais estão entre os alunos ativos do Saud.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">Preciso ir até Guaíra para ser aluno?</span><span class="faq-ic">+</span></button><div class="faq-ans">Não. A consultoria online atende todo o Brasil via WhatsApp + Mfit. O presencial é exclusivo para moradores de Guaíra-SP.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">Qual a diferença de um treino da internet?</span><span class="faq-ic">+</span></button><div class="faq-ans">Treino da internet é genérico. O método Saud parte da sua avaliação física real, com acompanhamento ativo: ajuste mensal e alguém que vai cobrar e celebrar contigo.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">E se eu não tiver resultado?</span><span class="faq-ic">+</span></button><div class="faq-ans">O protocolo é ajustado mensalmente. Fotos e medidas a cada 30 dias mostram o que está funcionando — e o que precisa mudar. Nunca ficamos parados.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">Tenho 40+ anos. Ainda compensa?</span><span class="faq-ic">+</span></button><div class="faq-ans">Mais do que compensa. Com o método certo, pessoas acima dos 40 têm resultados extraordinários. Saud tem alunos com 40, 50+ anos com resultados documentados.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="faq(this)"><span class="faq-q">Como funciona o pagamento?</span><span class="faq-ic">+</span></button><div class="faq-ans">PIX ou cartão. Planilha R$97 único. Consultoria Online R$297/mês (mínimo 3 meses) ou R$1.490 semestral. Personal Presencial R$580/mês.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-final" id="contato">
+  <div class="wrap cta-inner">
+    <div class="eyebrow" data-r="up">Primeiro Passo</div>
+    <h2 class="cta-h2" data-r="up" class="d1">
+      <span class="dim">Sem</span><br>desculpa.<br><span class="dim">Sem</span><br>adiamento.
+    </h2>
+    <p class="cta-p" data-r="up" class="d2">A avaliação é gratuita e sem compromisso. Você sai com clareza do que precisa fazer.</p>
+    <div data-r="up" class="d3">
+      <a href="https://wa.me/5517981915431?text=Oi%20Saud!%20Quero%20minha%20avaliação%20gratuita." target="_blank" class="cta-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Falar com o Saud Agora
+      </a>
+    </div>
+    <div class="cta-contacts" data-r="up" class="d4">
+      <div class="cta-ci">📍 <strong>Guaíra-SP</strong> presencial</div>
+      <div class="cta-ci">🌐 <strong>Online</strong> Brasil todo</div>
+      <div class="cta-ci">📱 <strong>(17) 98191-5431</strong></div>
+      <div class="cta-ci">📸 <strong>@saudmatheus</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap footer-in">
+    <div class="f-logo">Saud<span>.</span>Personal</div>
+    <div class="f-copy">© 2025 Matheus Saud — Guaíra-SP</div>
+  </div>
+</footer>
+
+<!-- WPP float -->
+<a href="https://wa.me/5517981915431?text=Oi%20Saud!" target="_blank" class="wpp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+/* ── cursor (desktop only) ── */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+  (function tick(){
+    cur.style.cssText=`left:${mx}px;top:${my}px`;
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.cssText=`left:${rx}px;top:${ry}px`;
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='52px';ring.style.height='52px';});
+    el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+  });
+}
+
+/* ── navbar ── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('stuck', scrollY > 50);
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ── reveal ── */
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -44px 0px' });
+document.querySelectorAll('[data-r]').forEach(el=>ro.observe(el));
+
+/* ── counter ── */
+function easeOutQuart(t){ return 1 - Math.pow(1-t,4); }
+function countUp(el, target, dur=1600){
+  let s=null;
+  (function step(ts){
+    if(!s) s=ts;
+    const p = Math.min((ts-s)/dur,1);
+    el.textContent = Math.round(easeOutQuart(p)*target);
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = target;
+  })(performance.now());
+}
+const co = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      countUp(e.target, +e.target.dataset.count);
+      co.unobserve(e.target);
+    }
+  });
+},{ threshold:.6 });
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+/* ── faq ── */
+function faq(btn){
+  const item = btn.closest('.faq-item');
+  const ans  = item.querySelector('.faq-ans');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-ans').style.maxHeight=null;
+  });
+  if(!open){ item.classList.add('open'); ans.style.maxHeight=ans.scrollHeight+'px'; }
+}
+
+/* ── smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Saud Personal Trainer","description":"Personal Trainer em Guaíra-SP. 37+ alunos ativos. Método personalizado. Presencial e online.","telephone":"+55-17-98191-5431","address":{"@type":"PostalAddress","addressLocality":"Guaíra","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/saudmatheus"],"priceRange":"R$97–R$580"}
+</script>
+</body>
+</html>
